@@ -34,6 +34,9 @@ func main() {
 				return
 			}
 		}
+		if maxList > 500 {
+			maxList = 500
+		}
 
 		file, err := os.Open("icd10pcs_codes_2023.txt")
 		if err != nil {
