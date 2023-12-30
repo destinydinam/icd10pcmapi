@@ -22,6 +22,11 @@ type Result struct {
 
 func main() {
 	http.HandleFunc("/search", func(w http.ResponseWriter, r *http.Request) {
+		// Set CORS headers
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET")
+		w.Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
+
 		term := strings.ToLower(r.URL.Query().Get("terms"))
 		maxListStr := r.URL.Query().Get("maxList")
 
